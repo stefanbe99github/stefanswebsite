@@ -274,11 +274,18 @@
       });
     });
 
-    // Sidoräknare (countapi)
-    fetch('https://api.countapi.xyz/hit/stefans-webpage/visits')
+    // Sidoräknare (CountAPI) - unik namespace för GitHub Pages
+    const counterEl = document.getElementById('counter');
+    const url = 'https://api.countapi.xyz/update/stefanbe99github.github.io/stefans-webpage/?amount=1';
+
+    fetch(url)
       .then(res => res.json())
       .then(res => {
-        document.getElementById('counter').innerHTML = '<i class="fas fa-eye"></i> Besökare: ' + res.value;
+        counterEl.innerHTML = '<i class="fas fa-eye"></i> Besökare: ' + res.value;
+      })
+      .catch(err => {
+        counterEl.innerHTML = '<i class="fas fa-eye"></i> Besökare: kunde inte laddas';
+        console.error("CountAPI error:", err);
       });
   </script>
 </body>
