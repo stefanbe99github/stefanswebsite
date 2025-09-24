@@ -7,10 +7,6 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -108,7 +104,6 @@
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 0.8s ease, transform 0.8s ease;
-      scroll-margin-top: 100px; /* gör så att headern inte täcker titeln */
     }
 
     section.visible {
@@ -164,6 +159,14 @@
     .contact-link i {
       font-size: 1.3rem;
     }
+
+    #counter {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: #1e3a8a;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -174,7 +177,7 @@
         <li><a href="#about"><i class="fas fa-user"></i> Om mig</a></li>
         <li><a href="#skills"><i class="fas fa-bolt"></i> Kompetenser</a></li>
         <li><a href="#experience"><i class="fas fa-briefcase"></i> Erfarenhet</a></li>
-        <li><a href="#utbildning"><i class="fas fa-graduation-cap"></i> Utbildning</a></li>
+        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Utbildning</a></li>
         <li><a href="#contact"><i class="fas fa-envelope"></i> Kontakt</a></li>
         <li><a href="https://github.com/stefanbe99github" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a></li>
       </ul>
@@ -191,11 +194,8 @@
       <img src="Jag.jpeg" alt="Min profilbild">
       <div>
         <h2>Om mig</h2>
-        <p>Jag är en driven Cloud & Infrastruktur Specialist med fokus på nätverk och IT-infrastruktur. 
-        Jag trivs att arbeta både operativt och i större projekt, där problemlösning, säkerhet och samarbete är i centrum.
-        Har alltid älskat IT och teknik, och jag är särskilt intresserad av AI och hur det kan integreras i IT-lösningar för att förbättra effektivitet och användarupplevelse.
-        Efter studietiden har jag använt AI för att tex skapa olika appar och hemsidor.
-
+        <p>Jag är en driven Cloud & Infrastructure Specialist med fokus på nätverk och IT-infrastruktur. 
+        Jag trivs att arbeta både operativt och i större projekt, där problemlösning, säkerhet och samarbete är i centrum.</p>
       </div>
     </section>
 
@@ -209,23 +209,23 @@
         <li>🔒 Säkerhet: Brandväggar, nätverkssäkerhet</li>
         <li>🤖 AI & Automation: ChatGPT, Google Gemini, Loveable.dev, scriptlösningar</li>
         <li>🛠 Verktyg: Docker, Visual Studio Code, Wireshark</li>
+        <li>🤖 Kodning med AI: GitHub Copilot, OpenAI API, automatisering med AI</li>
       </ul>
     </section>
 
     <section id="experience">
       <h2>Erfarenhet</h2>
-      <p><b>IT-supporttekniker</b> – Väg och Anläggning Skanska Kramfors 2002-2019</p>
-      <p>Drift, underhåll och felsökning av nätverk, skrivare och servrar.</p>
-      <p><b>Kalkylassistent</b> – Väg och Anläggning Skanska Kramfors 2005-2019</p>
-      
-      <p><b>Bygg- & projektledning</b> – [Företag]<br>
+      <p>IT-supporttekniker på Väg och Anläggning Skanska Kramfors 2002-2019</p>
+      <p>Kalkylassistent Väg och Anläggning Skanska Kramfors 2005-2019</p>
+      <p><b>IT & Infrastruktur</b><br> Drift, underhåll och felsökning av nätverk och servrar, samt projektarbete kring molnmigrering.</p>
+      <p><b>Bygg- & projektledning – [Företag]</b><br>
       Ansvar för planering och genomförande av projekt, vilket stärkte min problemlösningsförmåga och ledarskap.</p>
     </section>
 
-    <section id="utbildning">
+    <section id="education">
       <h2>Utbildning</h2>
-      <p><b>IT supporttekniker</b> – Lexicon 2020-2021</p>
-      <p><b>Cloud och Infrastruktur specialist</b> – Växjö YH 2022-2024</p>
+      <p><b>IT supporttekniker Lexicon 2020-2021</b></p>
+      <p><b>Cloud och Infrastruktur specialist Växjö YH 2022-2024</b></p>
     </section>
 
     <section id="contact">
@@ -238,24 +238,34 @@
           <i class="fab fa-github"></i> GitHub
         </a>
       </div>
+      <div id="counter"><i class="fas fa-eye"></i> Besökare: laddar...</div>
     </section>
   </main>
 
   <script>
-    // Gör sektioner synliga när de kommer fram
+    // Scroll animation
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a[href^='#']");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom > 120) {
-          current = section.id;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
         }
       });
+    }, { threshold: 0.2 });
+    sections.forEach(section => {
+      observer.observe(section);
+    });
 
+    // Meny highlighting
+    const navLinks = document.querySelectorAll("nav a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
       navLinks.forEach(link => {
         link.classList.remove("active");
         if (link.getAttribute("href") === "#" + current) {
@@ -264,16 +274,12 @@
       });
     });
 
-    // Fade-in animation med observer
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
+    // Sidoräknare (countapi)
+    fetch('https://api.countapi.xyz/hit/stefans-webpage/visits')
+      .then(res => res.json())
+      .then(res => {
+        document.getElementById('counter').innerHTML = '<i class="fas fa-eye"></i> Besökare: ' + res.value;
       });
-    }, { threshold: 0.2 });
-
-    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
