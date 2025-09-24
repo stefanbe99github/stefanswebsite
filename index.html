@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stefans webpage</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: #1e3a8a;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #93c5fd;
+    }
+
+    /* Hamburgarmeny */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      background: #fff;
+      height: 3px;
+      width: 25px;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #1e3a8a;
+        position: absolute;
+        top: 60px;
+        left: 20px;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+        margin-left: auto;
+      }
+    }
+
+    section {
+      max-width: 900px;
+      margin: 100px auto 60px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      scroll-margin-top: 100px; /* gör så att headern inte täcker titeln */
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #1e3a8a;
+      margin-top: 0;
+    }
+
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    #about img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+      background: #1e3a8a;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background: #3b82f6;
+    }
+
+    .contact-link i {
+      font-size: 1.3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Stefans sida</h1>
+    <nav>
+      <ul>
+        <li><a href="#about"><i class="fas fa-user"></i> Om mig</a></li>
+        <li><a href="#skills"><i class="fas fa-bolt"></i> Kompetenser</a></li>
+        <li><a href="#experience"><i class="fas fa-briefcase"></i> Erfarenhet</a></li>
+        <li><a href="#utbildning"><i class="fas fa-graduation-cap"></i> Utbildning</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Kontakt</a></li>
+        <li><a href="https://github.com/stefanbe99github" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <img src="Jag.jpeg" alt="Min profilbild">
+      <div>
+        <h2>Om mig</h2>
+        <p>Jag är en driven Cloud & Infrastruktur Specialist med fokus på nätverk och IT-infrastruktur. 
+        Jag trivs att arbeta både operativt och i större projekt, där problemlösning, säkerhet och samarbete är i centrum.
+        Har alltid älskat IT och teknik, och jag är särskilt intresserad av AI och hur det kan integreras i IT-lösningar för att förbättra effektivitet och användarupplevelse.
+        Efter studietiden har jag använt AI för att tex skapa olika appar och hemsidor.
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Kompetenser</h2>
+      <ul>
+        <li>📡 Routrar & Switchar: Cisco, MikroTik, Ubiquiti</li>
+        <li>🌐 Nätverk: LAN, WAN, VLAN, VPN, TCP/IP, DNS, DHCP</li>
+        <li>💻 Operativsystem: Windows Server, Linux</li>
+        <li>☁️ Moln: Azure, Amazon WS, Google Cloud</li>
+        <li>🔒 Säkerhet: Brandväggar, nätverkssäkerhet</li>
+        <li>🤖 AI & Automation: ChatGPT, Google Gemini, Loveable.dev, scriptlösningar</li>
+        <li>🛠 Verktyg: Docker, Visual Studio Code, Wireshark</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Erfarenhet</h2>
+      <p><b>IT-supporttekniker</b> – Väg och Anläggning Skanska Kramfors 2002-2019</p>
+      <p>Drift, underhåll och felsökning av nätverk, skrivare och servrar.</p>
+      <p><b>Kalkylassistent</b> – Väg och Anläggning Skanska Kramfors 2005-2019</p>
+      
+      <p><b>Bygg- & projektledning</b> – [Företag]<br>
+      Ansvar för planering och genomförande av projekt, vilket stärkte min problemlösningsförmåga och ledarskap.</p>
+    </section>
+
+    <section id="utbildning">
+      <h2>Utbildning</h2>
+      <p><b>IT supporttekniker</b> – Lexicon 2020-2021</p>
+      <p><b>Cloud och Infrastruktur specialist</b> – Växjö YH 2022-2024</p>
+    </section>
+
+    <section id="contact">
+      <h2>Kontakt</h2>
+      <div class="contact-links">
+        <a href="mailto:stefanbe@telia.com" class="contact-link">
+          <i class="fas fa-envelope"></i> E-post
+        </a>
+        <a href="https://github.com/stefanbe99github" target="_blank" rel="noopener" class="contact-link">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Gör sektioner synliga när de kommer fram
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a[href^='#']");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom > 120) {
+          current = section.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Fade-in animation med observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
