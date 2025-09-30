@@ -194,8 +194,9 @@
       <img src="Jag.jpeg" alt="Min profilbild">
       <div>
         <h2>Om mig</h2>
-        <p>Jag är en driven Cloud & Infrastructure Specialist med fokus på nätverk och IT-infrastruktur. 
-        Jag trivs att arbeta både operativt och i större projekt, där problemlösning, säkerhet och samarbete är i centrum.</p>
+        <p>Jag är en driven Cloud & Infrastructure Specialist med fokus på nätverk, backend, frontend och IT-infrastruktur. 
+        Jag trivs att arbeta både operativt och i större projekt, där problemlösning, säkerhet och samarbete är i centrum. 
+        Gillar att testa nya IT lösningar och få tekniken att fungera.</p>
       </div>
     </section>
 
@@ -206,21 +207,22 @@
         <li>🌐 Nätverk: LAN, WAN, VLAN, VPN, TCP/IP, DNS, DHCP</li>
         <li>💻 Operativsystem: Windows Server, Linux</li>
         <li>☁️ Moln: Azure, Amazon WS, Google Cloud</li>
-        <li>🔒 Säkerhet: Brandväggar, nätverkssäkerhet</li>
+        <li>🔒 Säkerhet: Brandväggar, nätverkssäkerhet, Anitivirus, NAS</li>
         <li>🤖 AI & Automation: ChatGPT, Google Gemini, Loveable.dev, scriptlösningar</li>
-        <li>🛠 Verktyg: Docker, Visual Studio Code, Wireshark</li>
-        <li>🤖 Kodning med AI: GitHub Copilot, OpenAI API, automatisering med AI</li>
+        <li>🛠 Verktyg: Docker, Kubernetes, Databas, Visual Studio Code</li>
+        <li>🤖 Kodning med AI:ChatGPT, Google Gemini, Loveable med flera</li>
+        
       </ul>
     </section>
 
     <section id="experience">
       <h2>Erfarenhet</h2>
-      <p>IT-supporttekniker på Väg och Anläggning Skanska Kramfors 2002-2019</p>
-      <p>Kalkylassistent Väg och Anläggning Skanska Kramfors 2005-2019</p>
-      <p><b>IT & Infrastruktur</b><br> Drift, underhåll och felsökning av nätverk och servrar, samt projektarbete kring molnmigrering.</p>
-      <p><b>Bygg- & projektledning – [Företag]</b><br>
-      Ansvar för planering och genomförande av projekt, vilket stärkte min problemlösningsförmåga och ledarskap.</p>
-    </section>
+      <p><b>IT-supporttekniker 2002-2019</b></p>
+      Windows Server, AD, Office 365, nätverkshantering, felsökning och användarsupport i en dynamisk IT-miljö.
+      <p><b>Kalkylassistent 2005-2019</b></p>
+      <p>Räknade på byggprojekt, skapade offerter och fakturor, samt hanterade kundkontakter.</p>
+      <p><b>IT & Infrastruktur</b><br> Drift, underhåll och felsökning av nätverk och servrar.</p>
+      </section>
 
     <section id="education">
       <h2>Utbildning</h2>
@@ -234,7 +236,7 @@
         <a href="mailto:stefanbe@telia.com" class="contact-link">
           <i class="fas fa-envelope"></i> E-post
         </a>
-        <a href="https://github.com/stefanbe99github" target="_blank" rel="noopener" class="contact-link">
+        <a href="https://stefanbe99github.github.io/stefanswebsite/" target="_blank" rel="noopener" class="contact-link">
           <i class="fab fa-github"></i> GitHub
         </a>
       </div>
@@ -274,19 +276,6 @@
       });
     });
 
-    // Sidoräknare (CountAPI) - unik namespace för GitHub Pages
-    const counterEl = document.getElementById('counter');
-    const url = 'https://api.countapi.xyz/update/stefanbe99github.github.io/stefans-webpage/?amount=1';
-
-    fetch(url)
-      .then(res => res.json())
-      .then(res => {
-        counterEl.innerHTML = '<i class="fas fa-eye"></i> Besökare: ' + res.value;
-      })
-      .catch(err => {
-        counterEl.innerHTML = '<i class="fas fa-eye"></i> Besökare: kunde inte laddas';
-        console.error("CountAPI error:", err);
-      });
   </script>
 </body>
 </html>
